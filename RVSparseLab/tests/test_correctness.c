@@ -5,13 +5,7 @@
 
 #include "../include/sparse.h"
 
-static void dense_spmv(
-    const double* A,
-    int rows,
-    int cols,
-    const double* x,
-    double* y
-)
+static void dense_spmv(const double* A, int rows, int cols, const double* x, double* y)
 {
     for (int i = 0; i < rows; ++i) {
         double sum = 0.0;
@@ -52,9 +46,7 @@ static void print_memory_statistics(int rows, int cols, int nnz)
 {
 
     size_t dense_bytes =(size_t)rows * cols * sizeof(double);
-
     size_t csr_bytes =nnz * sizeof(double) + nnz * sizeof(int) + (rows + 1) * sizeof(int);
-
     double compression_ratio =(double)dense_bytes / csr_bytes;
 
     printf("\n");

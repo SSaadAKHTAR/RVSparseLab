@@ -3,12 +3,7 @@
 #include <time.h>
 #include "../include/sparse.h"
 
-void generate_random_sparse_matrix(
-    double* A,
-    int rows,
-    int cols,
-    double density
-)
+void generate_random_sparse_matrix(double* A, int rows, int cols, double density)
 {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
@@ -25,12 +20,7 @@ void generate_random_sparse_matrix(
     }
 }
 
-void generate_diagonal_matrix(
-    double* A,
-    int rows,
-    int cols,
-    double value
-)
+void generate_diagonal_matrix(double* A, int rows, int cols, double value)
 {
 
     for (int i = 0; i < rows; ++i) {
@@ -46,12 +36,7 @@ void generate_diagonal_matrix(
     }
 }
 
-void generate_banded_matrix(
-    double* A,
-    int rows,
-    int cols,
-    int bandwidth
-)
+void generate_banded_matrix(double* A, int rows, int cols, int bandwidth)
 {
 
     for (int i = 0; i < rows; ++i) {

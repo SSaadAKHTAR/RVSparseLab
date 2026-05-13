@@ -2,12 +2,7 @@
 #include <stdlib.h>
 #include "../include/sparse.h"
 
-void dense_to_csc(
-    const double* A,
-    int rows,
-    int cols,
-    CSCMatrix* csc
-)
+void dense_to_csc(const double* A, int rows, int cols, CSCMatrix* csc)
 {
     int nnz = 0;
 
@@ -23,12 +18,9 @@ void dense_to_csc(
     csc->cols = cols;
     csc->nnz  = nnz;
 
-    csc->values = (double*)malloc(
-        nnz * sizeof(double));
-    csc->row_indices = (int*)malloc(
-        nnz * sizeof(int));
-    csc->col_ptrs = (int*)malloc(
-        (cols + 1) * sizeof(int));
+    csc->values = (double*)malloc(nnz * sizeof(double));
+    csc->row_indices = (int*)malloc(nnz * sizeof(int));
+    csc->col_ptrs = (int*)malloc((cols + 1) * sizeof(int));
 
     int index = 0;
     csc->col_ptrs[0] = 0;
@@ -47,9 +39,7 @@ void dense_to_csc(
     }
 }
 
-void csc_print(
-    const CSCMatrix* csc
-)
+void csc_print(const CSCMatrix* csc)
 {
     printf("\nCSC Matrix\n");
     printf("=================================\n");
@@ -61,32 +51,27 @@ void csc_print(
     printf("values:\n");
 
     for (int i = 0; i < csc->nnz; ++i) {
-        printf("%8.2f ",
-            csc->values[i]);
+        printf("%8.2f ", csc->values[i]);
     }
 
     printf("\n\n");
     printf("row_indices:\n");
 
     for (int i = 0; i < csc->nnz; ++i) {
-        printf("%8d ",
-            csc->row_indices[i]);
+        printf("%8d ", csc->row_indices[i]);
     }
 
     printf("\n\n");
     printf("col_ptrs:\n");
 
     for (int i = 0; i < csc->cols + 1; ++i) {
-        printf("%8d ",
-            csc->col_ptrs[i]);
+        printf("%8d ", csc->col_ptrs[i]);
     }
 
     printf("\n\n");
 }
 
-void csc_free(
-    CSCMatrix* csc
-)
+void csc_free(CSCMatrix* csc)
 {
     free(csc->values);
     free(csc->row_indices);
