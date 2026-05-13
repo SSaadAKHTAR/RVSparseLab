@@ -3,19 +3,9 @@
 
 #include <stddef.h>
 
-/*
-============================================================
-RVSparseLab
-Lightweight Sparse Linear Algebra Playground for RISC-V
-============================================================
-*/
 
-/*
-============================================================
-CSR MATRIX FORMAT
-Compressed Sparse Row
-============================================================
-*/
+// CSR matrix format compressed sparse row
+
 typedef struct {
     int rows;
     int cols;
@@ -27,12 +17,9 @@ typedef struct {
 
 } CSRMatrix;
 
-/*
-============================================================
-CSC MATRIX FORMAT
-Compressed Sparse Column
-============================================================
-*/
+
+// comprased sparse column format(csc)
+
 typedef struct {
     int rows;
     int cols;
@@ -44,32 +31,23 @@ typedef struct {
 
 } CSCMatrix;
 
-/*
-============================================================
-DENSE MATRIX UTILITIES
-============================================================
-*/
 
-/* Allocate dense matrix */
+
+//allocation of dense matrix
 double* dense_alloc(int rows, int cols);
 
-/* Free dense matrix */
+// free dense matrix
 void dense_free(double* A);
 
-/* Print dense matrix */
+// print dense matrix
 void dense_print(
     const double* A,
     int rows,
     int cols
 );
 
-/*
-============================================================
-MATRIX GENERATORS
-============================================================
-*/
 
-/* Generate random sparse matrix */
+
 void generate_random_sparse_matrix(
     double* A,
     int rows,
@@ -77,7 +55,7 @@ void generate_random_sparse_matrix(
     double density
 );
 
-/* Generate diagonal matrix */
+
 void generate_diagonal_matrix(
     double* A,
     int rows,
@@ -85,7 +63,6 @@ void generate_diagonal_matrix(
     double value
 );
 
-/* Generate banded matrix */
 void generate_banded_matrix(
     double* A,
     int rows,
@@ -93,13 +70,9 @@ void generate_banded_matrix(
     int bandwidth
 );
 
-/*
-============================================================
-CSR OPERATIONS
-============================================================
-*/
 
-/* Convert dense matrix to CSR */
+
+// dense matrix to csr
 void dense_to_csr(
     const double* A,
     int rows,
@@ -107,23 +80,16 @@ void dense_to_csr(
     CSRMatrix* csr
 );
 
-/* Print CSR matrix */
 void csr_print(
     const CSRMatrix* csr
 );
 
-/* Free CSR matrix */
 void csr_free(
     CSRMatrix* csr
 );
 
-/*
-============================================================
-CSC OPERATIONS
-============================================================
-*/
 
-/* Convert dense matrix to CSC */
+// dense to csc 
 void dense_to_csc(
     const double* A,
     int rows,
@@ -131,49 +97,30 @@ void dense_to_csc(
     CSCMatrix* csc
 );
 
-/* Print CSC matrix */
 void csc_print(
     const CSCMatrix* csc
 );
 
-/* Free CSC matrix */
 void csc_free(
     CSCMatrix* csc
 );
 
-/*
-============================================================
-SPARSE MATRIX VECTOR MULTIPLICATION
-============================================================
-*/
-
-/*
-y = A * x
-CSR implementation
-*/
+// sparse matrix multiply by vector
 void csr_spmv(
     const CSRMatrix* csr,
     const double* x,
     double* y
 );
 
-/*
-y = A * x
-CSC implementation
-*/
 void csc_spmv(
     const CSCMatrix* csc,
     const double* x,
     double* y
 );
 
-/*
-============================================================
-BENCHMARKING
-============================================================
-*/
 
-/* Benchmark CSR SpMV */
+
+//benchmark of csr spmv
 double benchmark_csr_spmv(
     const CSRMatrix* csr,
     const double* x,
@@ -181,7 +128,7 @@ double benchmark_csr_spmv(
     int iterations
 );
 
-/* Benchmark CSC SpMV */
+// benchmark of csc spmv
 double benchmark_csc_spmv(
     const CSCMatrix* csc,
     const double* x,
@@ -189,20 +136,7 @@ double benchmark_csc_spmv(
     int iterations
 );
 
-/*
-============================================================
-RVV FUTURE KERNEL STUBS
-============================================================
-*/
-
-/*
-Future RVV implementation placeholder.
-
-Potential RVV instructions:
-- vle64.v
-- vluxei64.v
-- vfmacc.vv
-*/
+// future RVV kernel place holder
 void csr_spmv_rvv_stub(
     const CSRMatrix* csr,
     const double* x,
