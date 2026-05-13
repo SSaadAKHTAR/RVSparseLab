@@ -212,7 +212,6 @@ Compression Ratio : 12.9x
 
 ```
 RVSparseLab/
-├── README.md
 ├── Makefile
 ├── include/
 │   └── sparse.h
